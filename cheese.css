@@ -13,12 +13,11 @@ body {
   color: #fff;
 }
 
-.cow {
-  z-index: 2;
-  position: absolute;
-  content: url("https://vignette.wikia.nocookie.net/nickfanon/images/4/44/Otis_the_Cow.png/revision/latest?cb=20111116183027");
+#mouse {
+    position: absolute;
+    width: 100px;
+    left: 900px;
+    bottom: 0px;
 }
-
-
 
 
