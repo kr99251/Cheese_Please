@@ -1,0 +1,24 @@
+#container {
+    position: relative;
+    left: 50px;
+    width: 1800px;
+    height: 950px;
+    border: 5px white solid;
+    background-image: url("https://images.pexels.com/photos/2125422/pexels-photo-2125422.jpeg?cs=srgb&dl=blur-close-up-countryside-2125422.jpg&fm=jpg");
+    cursor: pointer;
+}
+
+body {
+  background: #87cefd;
+  color: #fff;
+}
+
+.cow {
+  z-index: 2;
+  position: absolute;
+  content: url("https://vignette.wikia.nocookie.net/nickfanon/images/4/44/Otis_the_Cow.png/revision/latest?cb=20111116183027");
+}
+
+
+
+
