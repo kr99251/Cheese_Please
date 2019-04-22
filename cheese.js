@@ -7,16 +7,10 @@ class Mouse {
     this.elem.style.width = this.size + "px";
   }
     render() {
-    this.elem.style.top = this.ypos + "px";
+    this.elem.style.bottom = this.ypos + "px";
     this.elem.style.left = this.xpos + "px";
 }
 
 var container = document.getElementById("container");
-
-/*let animatedDiv = document.createElement("img");
-  animatedDiv.className = "mouse";
-  animatedDiv.src = "https://image.shutterstock.com/image-vector/cute-cartoon-mouse-vector-illustration-260nw-98210156.jpg";
-  animatedDiv.id = "mouse";
-container.appendChild(animatedDiv);*/
 
 mouse = new Mouse(900, 0, 200, mouse);
