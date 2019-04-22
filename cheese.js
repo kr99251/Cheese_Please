@@ -13,10 +13,10 @@ class Mouse {
 
 var container = document.getElementById("container");
 
-let animatedDiv = document.createElement("img");
+/*let animatedDiv = document.createElement("img");
   animatedDiv.className = "mouse";
-  animatedDiv.src = "https://www.google.com/search?q=mouse+cartoon&safe=strict&rlz=1C1GGRV_enUS811US811&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjf15Xgw-ThAhXO-lQKHS48C4oQ_AUIDigB&biw=1920&bih=974#imgrc=njiARnAZlaP6xM:";
+  animatedDiv.src = "https://image.shutterstock.com/image-vector/cute-cartoon-mouse-vector-illustration-260nw-98210156.jpg";
   animatedDiv.id = "mouse";
-container.appendChild(animatedDiv);
+container.appendChild(animatedDiv);*/
 
-new Mouse(900, 0, 200, animatedDiv.id)
+mouse = new Mouse(900, 0, 200, mouse);
