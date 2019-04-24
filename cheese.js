@@ -20,9 +20,9 @@ mouse = new Mouse(900, 0, 200, mouse);
 container.addEventListener("keydown", moveMouse);
 
 function moveMouse(event) {
-    let mouse.style.xPosition = event.clientX
     if (event.keyCode === 37){
-        mouse..style.left=parseInt(mouse.style.left)-5 +'px';
+        mouse.style.left = mouse.style.left - 5 +"px";
     } else if (event.keyCode === 39) {
-        mouse..style.left=parseInt(mouse.style.left)+5 +'px';
+        mouse.style.left = mouse.style.left - 5 +"px";
+}
 }
