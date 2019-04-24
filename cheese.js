@@ -21,8 +21,7 @@ container.addEventListener("keydown", moveMouse);
 function moveMouse(event) {
     let mouse.style.xPosition = event.clientX
     if (event.keyCode === 37){
-        mouse.style.xpos = mouse.style.xpos -5px;
+        mouse..style.left=parseInt(mouse.style.left)-5 +'px';
     } else if (event.keyCode === 39) {
-        mouse.style.xpos = mouse.style.xpos +5px;
-    }
+        mouse..style.left=parseInt(mouse.style.left)+5 +'px';
 }
