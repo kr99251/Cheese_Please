@@ -1,6 +1,3 @@
-let mouse = document.getElementById("mouse");
-let container = document.getElementById("container");
-
 class Obstacle {
     constructor(_xpos, _ypos, _size, _id) {
     this.xpos = _xpos;
@@ -12,7 +9,10 @@ class Obstacle {
     render() {
     this.elem.style.bottom = this.ypos + "px";
     this.elem.style.left = this.xpos + "px";
-}
+} }
+
+var mouse = document.getElementById("mouse");
+var container = document.getElementById("container");
 
 mouse = new Mouse(900, 0, 200, mouse);
 
@@ -25,3 +25,4 @@ function moveMouse(event) {
     } else if (event.keyCode === 39) {
         mouse.style.xpos = mouse.style.xpos +5px;
     }
+}
