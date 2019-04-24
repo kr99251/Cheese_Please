@@ -12,17 +12,26 @@ class Obstacle {
 }
 }
 
-var mouse = document.getElementById("mouse");
-var container = document.getElementById("container");
+var mouse = document.getElementById('mouse')
+document.onkeydown = checkKey;
 
-mouse = new Mouse(900, 0, 200, mouse);
+function moveSideways(event) {
 
-container.addEventListener("keydown", moveMouse);
+    event = event || window.event;
 
-function moveMouse(event) {
-    if (event.keyCode === 37){
-        mouse.style.left = mouse.style.left - 5 +"px";
-    } else if (event.keyCode === 39) {
-        mouse.style.left = mouse.style.left - 5 +"px";
+    if (e.keyCode == '32') {
+        rotate();
+    } else if (e.keyCode == '37') {
+        moveLeft();
+    } else if (e.keyCode == '39') {
+        moveRight();
+    }
+
 }
+function moveLeft() {
+    mouse.style.left = parseInt(mouse.style.left) - 5 + 'px';
+}
+
+function moveRight() {
+    mouse.style.left = parseInt(mouse.style.left) + 5 + 'px';
 }
