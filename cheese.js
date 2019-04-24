@@ -9,7 +9,8 @@ class Obstacle {
     render() {
     this.elem.style.bottom = this.ypos + "px";
     this.elem.style.left = this.xpos + "px";
-} }
+}
+}
 
 var mouse = document.getElementById("mouse");
 var container = document.getElementById("container");
