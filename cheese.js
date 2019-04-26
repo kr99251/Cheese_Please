@@ -17,14 +17,6 @@ class CheesePlease {
     moveRight() {
         this.mouse.style.left = parseInt(mouse.style.left) + 5 + 'px';
     }
-
-    moveSideways(e) {
-
-
-
-    }
-
-
 }
 
 let game = new CheesePlease();
@@ -40,8 +32,22 @@ window.addEventListener('keydown', (e) => {
 
 game.play();
 
+class Cheese {
+    constructor(_xpos, _ypos,_ystep, _id) {
+      this.xpos = _xpos;
+      this.ypos = _ypos;
+      this.ystep = _ystep;
+      this.elem = document.getElementById(_cheese);
+    }
 
-class Obstacle {
+     render () {
+        this.elem.style.top = this.ypos + 'px';
+        this.elem.style.left = this.xpos + 'px';
+
+    }
+}
+
+/*class Obstacle {
     constructor(_xpos, _ypos, _size, _id) {
     this.xpos = _xpos;
     this.ypos = _ypos;
