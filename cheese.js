@@ -1,5 +1,7 @@
+//'use strict';
 
 class CheesePlease {
+
     constructor() {
         this.mouse = document.getElementById('mouse')
         this.obstacles = [];
@@ -17,6 +19,7 @@ class CheesePlease {
     moveRight() {
         this.mouse.style.left = parseInt(mouse.style.left) + 5 + 'px';
     }
+
 }
 
 let game = new CheesePlease();
@@ -33,11 +36,17 @@ window.addEventListener('keydown', (e) => {
 game.play();
 
 class Cheese {
-    constructor(_xpos, _ypos,_ystep, _id) {
+    constructor(_xpos, _ypos,_ystep) {
       this.xpos = _xpos;
       this.ypos = _ypos;
       this.ystep = _ystep;
-      this.elem = document.getElementById(_cheese);
+      this.elem = document.createElement("img");
+        this.elem.src =
+    "./cheese.png";
+  this.elem.id = "cheese"
+        this.elem.style.width = "100px";
+        let container = document.getElementById("container")
+  container.appendChild(this.elem);
     }
 
      render () {
@@ -46,6 +55,10 @@ class Cheese {
 
     }
 }
+
+let first = new Cheese(100,0,0);
+first.render();
+
 
 /*class Obstacle {
     constructor(_xpos, _ypos, _size, _id) {
@@ -60,3 +73,4 @@ class Cheese {
     this.elem.style.left = this.xpos + "px";
 }
 }
+*/
