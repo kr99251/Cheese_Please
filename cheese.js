@@ -13,7 +13,7 @@ class Obstacle {
 }
 
 var mouse = document.getElementById('mouse')
-document.onkeydown = checkKey;
+document.onkeydown = moveSideways;
 
 function moveSideways(event) {
 
