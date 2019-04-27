@@ -40,23 +40,26 @@ class Cheese {
       this.xpos = _xpos;
       this.ypos = _ypos;
       this.ystep = _ystep;
-      this.elem = document.createElement("img");
-        this.elem.src =
-    "./cheese.png";
-  this.elem.id = "cheese"
-        this.elem.style.width = "100px";
+
+      let elem = document.createElement("img");
+        elem.src = "./cheese.png";
+        elem.style.width = "100px";
+        elem.className = "cheese";
+    //elem.id = "cheese"
         let container = document.getElementById("container")
-  container.appendChild(this.elem);
+  container.appendChild(elem);
+
+        this.elem = elem;
     }
 
      render () {
         this.elem.style.top = this.ypos + 'px';
         this.elem.style.left = this.xpos + 'px';
-
+console.log(this.elem.style.top, this.elem.style.left);
     }
 }
 
-let first = new Cheese(100,0,0);
+let first = new Cheese(Math.random()*1000,0,0);
 first.render();
 
 
