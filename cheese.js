@@ -42,7 +42,7 @@ class CheesePlease {
            that.cheese.render();
             //console.log(cheeseSize.bottom, containerSize.bottom);
             if(cheeseVal.bottom >= containerVal.bottom) {
-                console.log("LOSE");
+                alert("LOSER");
                 clearInterval(id);
             }
             const mouseVal = that.mouse.getBoundingClientRect();
