@@ -47,8 +47,9 @@ class CheesePlease {
             }
             const mouseVal = that.mouse.getBoundingClientRect();
             if(cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
-                //clearInterval(id);
-                that.cheese = new Cheese(Math.random()*1000,0,.8,this.container);
+                let cheeseSpeed = that.cheese.ystep + .2;
+                that.cheese = new Cheese(Math.random()*1000,0,cheeseSpeed,this.container);
+                console.log(cheeseSpeed);
                 //code to follow mouse
             }
         }, 10);
@@ -60,11 +61,11 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(mouse.style.left) - 5 + 'px';
+        this.mouse.style.left = parseInt(mouse.style.left) - 10 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(mouse.style.left) + 5 + 'px';
+        this.mouse.style.left = parseInt(mouse.style.left) + 10 + 'px';
     }
 
 
