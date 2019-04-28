@@ -36,13 +36,17 @@ class CheesePlease {
 
     play() {
         const that = this;
-        const containerSize = that.container.getBoundingClientRect();
+        const containerVal = that.container.getBoundingClientRect();
         let id = setInterval(function() {
-            const cheeseSize = that.cheese.elem.getBoundingClientRect();
+            const cheeseVal = that.cheese.elem.getBoundingClientRect();
            that.cheese.render();
             //console.log(cheeseSize.bottom, containerSize.bottom);
-            if(cheeseSize.bottom >= containerSize.bottom) {
+            if(cheeseVal.bottom >= containerVal.bottom) {
                 console.log("LOSE");
+                clearInterval(id);
+            }
+            const mouseVal = that.mouse.getBoundingClientRect();
+            if(cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
                 clearInterval(id);
             }
         }, 10);
