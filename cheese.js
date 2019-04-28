@@ -47,9 +47,12 @@ class CheesePlease {
             }
             const mouseVal = that.mouse.getBoundingClientRect();
             if(cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
-                clearInterval(id);
+                //clearInterval(id);
+                that.cheese = new Cheese(Math.random()*1000,0,.8,this.container);
+                //code to follow mouse
             }
         }, 10);
+
 
 
         // this is where you will populate the array, update ...
