@@ -1,13 +1,53 @@
 //'use strict';
 
+class Cheese {
+    constructor(_xpos, _ypos, _ystep, _container) {
+      this.xpos = _xpos;
+      this.ypos = _ypos;
+      this.ystep = _ystep;
+
+      let elem = document.createElement("img");
+        elem.src = "./cheese.png";
+        elem.style.width = "100px";
+        elem.className = "cheese";
+    //elem.id = "cheese"
+  _container.appendChild(elem);
+
+
+        this.elem = elem;
+    }
+
+     render () {
+        this.elem.style.top = this.ypos + 'px';
+        this.elem.style.left = this.xpos + 'px';
+        this.ypos = this.ypos + this.ystep;
+    }
+}
+
+
 class CheesePlease {
 
     constructor() {
+        this.container = document.getElementById("container");
         this.mouse = document.getElementById('mouse')
         this.obstacles = [];
+        this.cheese = new Cheese(Math.random()*1000,0,.8,this.container);
     }
 
     play() {
+        const that = this;
+        const containerSize = that.container.getBoundingClientRect();
+        let id = setInterval(function() {
+            const cheeseSize = that.cheese.elem.getBoundingClientRect();
+           that.cheese.render();
+            //console.log(cheeseSize.bottom, containerSize.bottom);
+            if(cheeseSize.bottom >= containerSize.bottom) {
+                console.log("LOSE");
+                clearInterval(id);
+            }
+        }, 10);
+
+
         // this is where you will populate the array, update ...
     }
 
@@ -20,7 +60,11 @@ class CheesePlease {
         this.mouse.style.left = parseInt(mouse.style.left) + 5 + 'px';
     }
 
+
+
 }
+
+
 
 let game = new CheesePlease();
 
@@ -35,47 +79,10 @@ window.addEventListener('keydown', (e) => {
 
 game.play();
 
-class Cheese {
-    constructor(_xpos, _ypos,_ystep) {
-      this.xpos = _xpos;
-      this.ypos = _ypos;
-      this.ystep = _ystep;
 
-      let elem = document.createElement("img");
-        elem.src = "./cheese.png";
-        elem.style.width = "100px";
-        elem.className = "cheese";
-    //elem.id = "cheese"
-        let container = document.getElementById("container")
-  container.appendChild(elem);
 
-        this.elem = elem;
-    }
 
-     render () {
-        this.elem.style.top = this.ypos + 'px';
-        this.elem.style.left = this.xpos + 'px';
-console.log(this.elem.style.top, this.elem.style.left);
-    }
-    frame() {
-        this.ypos = this.ypos - this.ystep;
-        console.log(this.ypos);
-        console.log(this.ystep);
-    }
-    interval() {
-        const that = this;
-        setInterval(function() {
-                    that.ypos = that.ypos + that.ystep;
-        console.log(that.ypos);
-        console.log(that.ystep);
-            that.render();
-        }, 10);
-}
-}
 
-let first = new Cheese(Math.random()*1000,0,.10);
-first.interval();
-first.render();
 
 /*class Obstacle {
     constructor(_xpos, _ypos, _size, _id) {
