@@ -57,11 +57,25 @@ class Cheese {
         this.elem.style.left = this.xpos + 'px';
 console.log(this.elem.style.top, this.elem.style.left);
     }
+    frame() {
+        this.ypos = this.ypos - this.ystep;
+        console.log(this.ypos);
+        console.log(this.ystep);
+    }
+    interval() {
+        const that = this;
+        setInterval(function() {
+                    that.ypos = that.ypos + that.ystep;
+        console.log(that.ypos);
+        console.log(that.ystep);
+            that.render();
+        }, 10);
+}
 }
 
-let first = new Cheese(Math.random()*1000,0,0);
+let first = new Cheese(Math.random()*1000,0,.10);
+first.interval();
 first.render();
-
 
 /*class Obstacle {
     constructor(_xpos, _ypos, _size, _id) {
@@ -69,7 +83,7 @@ first.render();
     this.ypos = _ypos;
     this.size = _size;
     this.elem = document.getElementById(_id);
-    this.elem.style.width = this.size + "px";
+    this.elem.style.width = thiss.size + "px";
   }
     render() {
     this.elem.style.bottom = this.ypos + "px";
