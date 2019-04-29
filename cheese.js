@@ -29,7 +29,7 @@ class CheesePlease {
 
     constructor() {
         this.container = document.getElementById("container");
-        this.mouse = document.getElementById('mouse')
+        this.mouse = document.getElementById('mouse');
         this.obstacles = [];
         this.cheese = new Cheese(Math.random()*1000,0,.8,this.container);
     }
@@ -42,8 +42,10 @@ class CheesePlease {
            that.cheese.render();
             //console.log(cheeseSize.bottom, containerSize.bottom);
             if(cheeseVal.bottom >= containerVal.bottom) {
-                alert("LOSER");
+                //alert("LOSER, NO CHEESE FOR YOU");
                 clearInterval(id);
+                let deadMouse = document.getElementById('loser');
+                deadMouse.style.visibility = "visible";
             }
             const mouseVal = that.mouse.getBoundingClientRect();
             if(cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
