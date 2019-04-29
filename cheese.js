@@ -42,7 +42,6 @@ class CheesePlease {
            that.cheese.render();
             //console.log(cheeseSize.bottom, containerSize.bottom);
             if(cheeseVal.bottom >= containerVal.bottom) {
-                //alert("LOSER, NO CHEESE FOR YOU");
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
                 deadMouse.style.visibility = "visible";
@@ -63,11 +62,11 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(mouse.style.left) - 10 + 'px';
+        this.mouse.style.left = parseInt(mouse.style.left) - 20 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(mouse.style.left) + 10 + 'px';
+        this.mouse.style.left = parseInt(mouse.style.left) + 20 + 'px';
     }
 
 
