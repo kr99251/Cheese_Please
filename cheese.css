@@ -5,9 +5,9 @@
 }
 
 #mouse {
-    position: absolute;
-    width: 195px;
     bottom: 0px;
+    border: dashed;
+    position: absolute;
 }
 
 #container {
@@ -28,3 +28,4 @@
     color: darkcyan;
     font-size: 22px;
 }
+

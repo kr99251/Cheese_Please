@@ -39,8 +39,7 @@ class CheesePlease {
         const containerVal = that.container.getBoundingClientRect();
         let id = setInterval(function() {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
-           that.cheese.render();
-            //console.log(cheeseSize.bottom, containerSize.bottom);
+            that.cheese.render();
             if(cheeseVal.bottom >= containerVal.bottom) {
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
@@ -62,14 +61,14 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(mouse.style.left) - 20 + 'px';
+        console.log(this.mouse);
+        this.mouse.style.left = parseInt(this.mouse.style.left) - 20 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(mouse.style.left) + 20 + 'px';
+        console.log(this.mouse);
+        this.mouse.style.left = parseInt(this.mouse.style.left) + 20 + 'px';
     }
-
-
 
 }
 
