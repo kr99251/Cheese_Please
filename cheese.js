@@ -2,22 +2,22 @@
 
 class Cheese {
     constructor(_xpos, _ypos, _ystep, _container) {
-      this.xpos = _xpos;
-      this.ypos = _ypos;
-      this.ystep = _ystep;
+        this.xpos = _xpos;
+        this.ypos = _ypos;
+        this.ystep = _ystep;
 
-      let elem = document.createElement("img");
+        let elem = document.createElement("img");
         elem.src = "./cheese.png";
         elem.style.width = "100px";
         elem.className = "cheese";
-    //elem.id = "cheese"
-  _container.appendChild(elem);
+        //elem.id = "cheese"
+        _container.appendChild(elem);
 
 
         this.elem = elem;
     }
 
-     render () {
+    render() {
         this.elem.style.top = this.ypos + 'px';
         this.elem.style.left = this.xpos + 'px';
         this.ypos = this.ypos + this.ystep;
@@ -31,25 +31,27 @@ class CheesePlease {
         this.container = document.getElementById("container");
         this.mouse = document.getElementById('mouse');
         this.obstacles = [];
-        this.cheese = new Cheese(Math.random()*1000,0,.8,this.container);
+        this.cheese = new Cheese(Math.random() * 1000, 0, .8, this.container);
     }
 
     play() {
         const that = this;
         const containerVal = that.container.getBoundingClientRect();
-        let id = setInterval(function() {
+        let id = setInterval(function () {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
             that.cheese.render();
-            if(cheeseVal.bottom >= containerVal.bottom) {
+            if (cheeseVal.bottom >= containerVal.bottom) {
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
                 deadMouse.style.visibility = "visible";
             }
             const mouseVal = that.mouse.getBoundingClientRect();
-            if(cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
+            if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
+                that.mouse.insertBefore(that.cheese.elem, that.mouse.childNodes[0]);
+                that.cheese.elem.classList.remove("cheese");
+
                 let cheeseSpeed = that.cheese.ystep + .2;
-                that.cheese = new Cheese(Math.random()*1000,0,cheeseSpeed,this.container);
-                console.log(cheeseSpeed);
+                that.cheese = new Cheese(Math.random() * 1000, 0, cheeseSpeed, this.container);
                 //code to follow mouse
             }
         }, 10);
@@ -61,12 +63,10 @@ class CheesePlease {
 
 
     moveLeft() {
-        console.log(this.mouse);
         this.mouse.style.left = parseInt(this.mouse.style.left) - 20 + 'px';
     }
 
     moveRight() {
-        console.log(this.mouse);
         this.mouse.style.left = parseInt(this.mouse.style.left) + 20 + 'px';
     }
 
@@ -78,11 +78,11 @@ let game = new CheesePlease();
 
 window.addEventListener('keydown', (e) => {
 
-        if (e.keyCode == '37') {
-            game.moveLeft();
-        } else if (e.keyCode == '39') {
-            game.moveRight();
-        }
+    if (e.keyCode == '37') {
+        game.moveLeft();
+    } else if (e.keyCode == '39') {
+        game.moveRight();
+    }
 });
 
 game.play();

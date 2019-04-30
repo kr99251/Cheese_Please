@@ -1,6 +1,6 @@
-#title{
+#title {
     font-size: 50px;
-    font-family: Impact, charcoal, sans-serif;;
+    font-family: Impact, charcoal, sans-serif;
     color: #FFD700;
 }
 
@@ -8,6 +8,7 @@
     bottom: 0px;
     border: dashed;
     position: absolute;
+    width: 195px;
 }
 
 #container {
@@ -18,7 +19,7 @@
 }
 
 .cheese {
-    position:absolute;
+    position: absolute;
     width: 100px;
 }
 
@@ -28,4 +29,3 @@
     color: darkcyan;
     font-size: 22px;
 }
-
