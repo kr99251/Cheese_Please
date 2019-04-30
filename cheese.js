@@ -46,9 +46,10 @@ class CheesePlease {
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
                 that.mouse.style.visibility = "hidden";
-                deadMouse.style.visibility = "visible";
+                deadMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
             }
+
             const mouseVal = that.mouse.getBoundingClientRect();
             if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
                 that.mouse.insertBefore(that.cheese.elem, that.mouse.childNodes[0]);
@@ -56,15 +57,14 @@ class CheesePlease {
 
                 let cheeseSpeed = that.cheese.ystep + .2;
                 that.cheese = new Cheese(Math.random() * that.containerVal.width, 0, cheeseSpeed, this.container);
-                //code to follow mouse
             }
+
             if (mouseVal.height >= that.containerVal.height) {
                 clearInterval(id);
-                let deadMouse = document.getElementById('loser');
+                let liveMouse = document.getElementById('winner');
                 that.mouse.style.visibility = "hidden";
-                deadMouse.style.visibility = "visible";
+                liveMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
-                console.log(mouseVal.top);
             }
         }, 10);
 
@@ -75,11 +75,11 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) - 20 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) - 50 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) + 20 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) + 50 + 'px';
     }
 
 }

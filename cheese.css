@@ -25,9 +25,21 @@
 }
 
 #loser {
-    visibility: hidden;
+    display: none;
     font-family: Impact;
     color: darkcyan;
     font-size: 22px;
+    text-align: center;
+}
+
+#winner {
+    display: none;
+    font-family: Impact;
+    color: darkcyan;
+    font-size: 22px;
+    text-align: center;
+}
+
+img {
     text-align: center;
 }
