@@ -2,6 +2,7 @@
     font-size: 50px;
     font-family: Impact, charcoal, sans-serif;
     color: #FFD700;
+    text-align: center;
 }
 
 #mouse {
@@ -28,4 +29,5 @@
     font-family: Impact;
     color: darkcyan;
     font-size: 22px;
+    text-align: center;
 }
