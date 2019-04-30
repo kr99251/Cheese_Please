@@ -11,10 +11,12 @@ class Cheese {
         elem.style.width = "100px";
         elem.className = "cheese";
         //elem.id = "cheese"
+        this.elem = elem;
+        this.render();
         _container.appendChild(elem);
 
 
-        this.elem = elem;
+
     }
 
     render() {
@@ -29,18 +31,18 @@ class CheesePlease {
 
     constructor() {
         this.container = document.getElementById("container");
+        this.containerVal = this.container.getBoundingClientRect();
+        this.cheese = new Cheese(Math.random() * 1000, 0, .8, this.container);
         this.mouse = document.getElementById('mouse');
         this.obstacles = [];
-        this.cheese = new Cheese(Math.random() * 1000, 0, .8, this.container);
     }
 
     play() {
         const that = this;
-        const containerVal = that.container.getBoundingClientRect();
         let id = setInterval(function () {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
             that.cheese.render();
-            if (cheeseVal.bottom >= containerVal.bottom) {
+            if (cheeseVal.bottom >= that.containerVal.bottom) {
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
                 that.mouse.style.visibility = "hidden";
@@ -53,8 +55,16 @@ class CheesePlease {
                 that.cheese.elem.classList.remove("cheese");
 
                 let cheeseSpeed = that.cheese.ystep + .2;
-                that.cheese = new Cheese(Math.random() * 1000, 0, cheeseSpeed, this.container);
+                that.cheese = new Cheese(Math.random() * that.containerVal.width, 0, cheeseSpeed, this.container);
                 //code to follow mouse
+            }
+            if (mouseVal.height >= that.containerVal.height) {
+                clearInterval(id);
+                let deadMouse = document.getElementById('loser');
+                that.mouse.style.visibility = "hidden";
+                deadMouse.style.visibility = "visible";
+                that.cheese.elem.style.visibility = "hidden";
+                console.log(mouseVal.top);
             }
         }, 10);
 
