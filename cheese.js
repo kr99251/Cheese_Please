@@ -43,7 +43,9 @@ class CheesePlease {
             if (cheeseVal.bottom >= containerVal.bottom) {
                 clearInterval(id);
                 let deadMouse = document.getElementById('loser');
+                that.mouse.style.visibility = "hidden";
                 deadMouse.style.visibility = "visible";
+                that.cheese.elem.style.visibility = "hidden";
             }
             const mouseVal = that.mouse.getBoundingClientRect();
             if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
