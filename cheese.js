@@ -1,4 +1,5 @@
 //'use strict';
+var playButton = document.getElementById('letsPlay');
 
 class Cheese {
     constructor(_xpos, _ypos, _ystep, _container) {
@@ -26,13 +27,13 @@ class Cheese {
     }
 }
 
+let container = document.getElementById("container");
 
 class CheesePlease {
 
     constructor() {
-        this.container = document.getElementById("container");
-        this.containerVal = this.container.getBoundingClientRect();
-        this.cheese = new Cheese(Math.random() * (this.containerVal.width - 100), 0, .8, this.container);
+        this.containerVal = container.getBoundingClientRect();
+        this.cheese = new Cheese(Math.random() * (this.containerVal.width - 100), 0, .8, container);
         this.mouse = document.getElementById('mouse');
         this.mouse.style.left = (this.containerVal.width / 2);
         this.obstacles = [];
@@ -57,7 +58,7 @@ class CheesePlease {
                 that.cheese.elem.classList.remove("cheese");
 
                 let cheeseSpeed = that.cheese.ystep + .2;
-                that.cheese = new Cheese(Math.random() * (that.containerVal.width - 100), 0, cheeseSpeed, this.container);
+                that.cheese = new Cheese(Math.random() * (that.containerVal.width - 100), 0, cheeseSpeed, container);
             }
 
             if (mouseVal.height >= that.containerVal.height) {
@@ -85,7 +86,7 @@ class CheesePlease {
 
 }
 
-
+let homepage = document.getElementById("homepage");
 
 let game = new CheesePlease();
 
@@ -98,9 +99,13 @@ window.addEventListener('keydown', (e) => {
     }
 });
 
-game.play();
+playButton.addEventListener('click', () => {
+    homepage.style.display = "none";
+    container.style.display = "block";
+    game.play();
+    console.log(homepage.style.display);
 
-
+});
 
 
 
