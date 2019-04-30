@@ -37,12 +37,12 @@ p {
 }
 
 #container {
-    display: none;
     width: 100%;
     height: 80%;
     position: relative;
     background-image: url("https://images.pexels.com/photos/988873/pexels-photo-988873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
     border-top: 5px #20B2AA dashed;
+    z-index: -3;
 }
 
 .cheese {

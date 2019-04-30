@@ -28,6 +28,8 @@ class Cheese {
 }
 
 let container = document.getElementById("container");
+let deadMouse = document.getElementById('loser');
+let liveMouse = document.getElementById('winner');
 
 class CheesePlease {
 
@@ -46,7 +48,6 @@ class CheesePlease {
             that.cheese.render();
             if (cheeseVal.bottom >= that.containerVal.bottom) {
                 clearInterval(id);
-                let deadMouse = document.getElementById('loser');
                 that.mouse.style.visibility = "hidden";
                 deadMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
@@ -63,7 +64,6 @@ class CheesePlease {
 
             if (mouseVal.height >= that.containerVal.height) {
                 clearInterval(id);
-                let liveMouse = document.getElementById('winner');
                 that.mouse.style.visibility = "hidden";
                 liveMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
@@ -101,9 +101,8 @@ window.addEventListener('keydown', (e) => {
 
 playButton.addEventListener('click', () => {
     homepage.style.display = "none";
-    container.style.display = "block";
     game.play();
-    console.log(homepage.style.display);
+
 
 });
 
