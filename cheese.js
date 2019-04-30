@@ -32,8 +32,9 @@ class CheesePlease {
     constructor() {
         this.container = document.getElementById("container");
         this.containerVal = this.container.getBoundingClientRect();
-        this.cheese = new Cheese(Math.random() * 1000, 0, .8, this.container);
+        this.cheese = new Cheese(Math.random() * (this.containerVal.width - 100), 0, .8, this.container);
         this.mouse = document.getElementById('mouse');
+        this.mouse.style.left = (this.containerVal.width / 2);
         this.obstacles = [];
     }
 
@@ -56,7 +57,7 @@ class CheesePlease {
                 that.cheese.elem.classList.remove("cheese");
 
                 let cheeseSpeed = that.cheese.ystep + .2;
-                that.cheese = new Cheese(Math.random() * that.containerVal.width, 0, cheeseSpeed, this.container);
+                that.cheese = new Cheese(Math.random() * (that.containerVal.width - 100), 0, cheeseSpeed, this.container);
             }
 
             if (mouseVal.height >= that.containerVal.height) {
@@ -75,11 +76,11 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) - 50 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) - 20 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) + 50 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) + 20 + 'px';
     }
 
 }
