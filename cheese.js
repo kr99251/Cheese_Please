@@ -1,5 +1,6 @@
 //'use strict';
 var playButton = document.getElementById('letsPlay');
+var homeButton = document.getElementsByClassName('home');
 
 class Cheese {
     constructor(_xpos, _ypos, _ystep, _container) {
@@ -68,6 +69,7 @@ class CheesePlease {
                 liveMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
             }
+
         }, 10);
 
 
@@ -88,7 +90,7 @@ class CheesePlease {
 
 let homepage = document.getElementById("homepage");
 
-let game = new CheesePlease();
+let game = null;
 
 window.addEventListener('keydown', (e) => {
 
@@ -101,12 +103,21 @@ window.addEventListener('keydown', (e) => {
 
 playButton.addEventListener('click', () => {
     homepage.style.display = "none";
+    container.style.display = "block";
+    //    deadMouse.style.display = "none";
+    //    liveMouse.style.display = "none";
+    game = new CheesePlease();
     game.play();
-
-
 });
 
+for (var i = 0; i < homeButton.length; i++) {
+    homeButton[i].addEventListener('click', () => {
+        homepage.style.display = "block";
+    });
 
+}
+//
+//
 
 
 /*class Obstacle {
