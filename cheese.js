@@ -32,6 +32,7 @@ let container = document.getElementById("container");
 let deadMouse = document.getElementById('loser');
 let liveMouse = document.getElementById('winner');
 
+
 class CheesePlease {
 
     constructor() {
@@ -39,11 +40,14 @@ class CheesePlease {
         this.cheese = new Cheese(Math.random() * (this.containerVal.width - 100), 0, .8, container);
         this.mouse = document.getElementById('mouse');
         this.mouse.style.left = (this.containerVal.width / 2);
+        this.stack = document.createElement("div");
+        this.stack.id = "stack";
         this.obstacles = [];
     }
 
     play() {
         const that = this;
+        this.mouse.insertBefore(that.stack, that.mouse.childNodes[0]);
         let id = setInterval(function () {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
             that.cheese.render();
@@ -52,11 +56,12 @@ class CheesePlease {
                 that.mouse.style.visibility = "hidden";
                 deadMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
+                that.mouse.removeChild(that.stack);
             }
 
             const mouseVal = that.mouse.getBoundingClientRect();
             if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
-                that.mouse.insertBefore(that.cheese.elem, that.mouse.childNodes[0]);
+                that.stack.insertBefore(that.cheese.elem, that.stack.childNodes[0]);
                 that.cheese.elem.classList.remove("cheese");
 
                 let cheeseSpeed = that.cheese.ystep + .2;
@@ -68,6 +73,7 @@ class CheesePlease {
                 that.mouse.style.visibility = "hidden";
                 liveMouse.style.display = "block";
                 that.cheese.elem.style.visibility = "hidden";
+                that.mouse.removeChild(that.stack);
             }
 
         }, 10);
@@ -102,10 +108,10 @@ window.addEventListener('keydown', (e) => {
 });
 
 playButton.addEventListener('click', () => {
+    console.log(liveMouse.style.display);
     homepage.style.display = "none";
     container.style.display = "block";
-    //    deadMouse.style.display = "none";
-    //    liveMouse.style.display = "none";
+    mouse.style.visibility = "visible";
     game = new CheesePlease();
     game.play();
 });
@@ -113,6 +119,9 @@ playButton.addEventListener('click', () => {
 for (var i = 0; i < homeButton.length; i++) {
     homeButton[i].addEventListener('click', () => {
         homepage.style.display = "block";
+        container.style.display = "none";
+        deadMouse.style.display = "none";
+        liveMouse.style.display = "none";
     });
 
 }
