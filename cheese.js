@@ -9,8 +9,8 @@ class Cheese {
         this.ystep = _ystep;
 
         let elem = document.createElement("img");
-        elem.src = "./cheese.png";
-        elem.style.width = "100px";
+        elem.src = "./cheesel.png";
+        elem.style.width = "120px";
         elem.className = "cheese";
         //elem.id = "cheese"
         this.elem = elem;
