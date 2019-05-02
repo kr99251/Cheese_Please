@@ -1,4 +1,3 @@
-//'use strict';
 var playButton = document.getElementById('letsPlay');
 var homeButton = document.getElementsByClassName('home');
 let goal = document.getElementById("goal");
@@ -17,9 +16,6 @@ class Cheese {
         this.elem = elem;
         this.render();
         _container.appendChild(elem);
-
-
-
     }
 
     render() {
@@ -86,9 +82,6 @@ class CheesePlease {
 
         }, 10);
 
-
-
-        // this is where you will populate the array, update ...
     }
 
     moveLeft() {
