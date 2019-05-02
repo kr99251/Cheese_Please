@@ -72,7 +72,7 @@ class CheesePlease {
                 that.stack.insertBefore(that.cheese.elem, that.stack.childNodes[0]);
                 that.cheese.elem.classList.remove("cheese");
 
-                let cheeseSpeed = that.cheese.ystep + .025;
+                let cheeseSpeed = that.cheese.ystep + .15;
                 that.cheese = new Cheese(Math.random() * (that.containerVal.width - 100), 0, cheeseSpeed, container);
             }
             let goalVal = goal.getBoundingClientRect();
@@ -124,7 +124,7 @@ window.addEventListener('keydown', (e) => {
 
 playButton.addEventListener('click', () => {
     homepage.style.display = "none";
-    container.style.display = "block";
+    container.style.display = "inline-block";
     mouse.style.visibility = "visible";
     game = new CheesePlease();
     game.play();
@@ -140,21 +140,4 @@ for (var i = 0; i < homeButton.length; i++) {
     });
 
 }
-//
-//
 
-
-/*class Obstacle {
-    constructor(_xpos, _ypos, _size, _id) {
-    this.xpos = _xpos;
-    this.ypos = _ypos;
-    this.size = _size;
-    this.elem = document.getElementById(_id);
-    this.elem.style.width = thiss.size + "px";
-  }
-    render() {
-    this.elem.style.bottom = this.ypos + "px";
-    this.elem.style.left = this.xpos + "px";
-}
-}
-*/
