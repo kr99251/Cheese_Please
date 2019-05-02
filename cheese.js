@@ -94,14 +94,14 @@ class CheesePlease {
     moveLeft() {
         let mouseSide = this.mouse.getBoundingClientRect();
         if (mouseSide.left > this.containerVal.left) {
-            this.mouse.style.left = parseInt(this.mouse.style.left) - 100 + 'px';
+            this.mouse.style.left = parseInt(this.mouse.style.left) - 50 + 'px';
         }
     }
 
     moveRight() {
         let mouseSide = this.mouse.getBoundingClientRect();
         if (mouseSide.right < this.containerVal.right) {
-            this.mouse.style.left = parseInt(this.mouse.style.left) + 100 + 'px';
+            this.mouse.style.left = parseInt(this.mouse.style.left) + 50 + 'px';
         }
     }
 }
