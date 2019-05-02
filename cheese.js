@@ -43,16 +43,21 @@ class CheesePlease {
         this.mouse.style.left = (this.containerVal.width / 2);
         this.stack = document.createElement("div");
         this.stack.id = "stack";
-        this.obstacles = [];
+        this.cancel = false;
     }
 
     play() {
         const that = this;
+
         goal.style.display = "block";
+
         this.mouse.insertBefore(that.stack, that.mouse.childNodes[0]);
+
         let id = setInterval(function () {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
+
             that.cheese.render();
+
             if (cheeseVal.bottom >= that.containerVal.bottom) {
                 clearInterval(id);
                 that.mouse.style.visibility = "hidden";
@@ -62,6 +67,7 @@ class CheesePlease {
             }
 
             const mouseVal = that.mouse.getBoundingClientRect();
+
             if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right && cheeseVal.top <= mouseVal.top) {
                 that.stack.insertBefore(that.cheese.elem, that.stack.childNodes[0]);
                 that.cheese.elem.classList.remove("cheese");
@@ -85,16 +91,22 @@ class CheesePlease {
         // this is where you will populate the array, update ...
     }
 
-
     moveLeft() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) - 100 + 'px';
+        let mouseSide = this.mouse.getBoundingClientRect();
+        if (mouseSide.left > this.containerVal.left) {
+            this.mouse.style.left = parseInt(this.mouse.style.left) - 100 + 'px';
+        }
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) + 100 + 'px';
+        let mouseSide = this.mouse.getBoundingClientRect();
+        if (mouseSide.right < this.containerVal.right) {
+            this.mouse.style.left = parseInt(this.mouse.style.left) + 100 + 'px';
+        }
     }
-
 }
+
+
 
 let homepage = document.getElementById("homepage");
 
