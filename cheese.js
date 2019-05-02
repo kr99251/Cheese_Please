@@ -1,6 +1,7 @@
 //'use strict';
 var playButton = document.getElementById('letsPlay');
 var homeButton = document.getElementsByClassName('home');
+let goal = document.getElementById("goal");
 
 class Cheese {
     constructor(_xpos, _ypos, _ystep, _container) {
@@ -10,7 +11,7 @@ class Cheese {
 
         let elem = document.createElement("img");
         elem.src = "./cheesel.png";
-        elem.style.width = "120px";
+        elem.style.width = "150px";
         elem.className = "cheese";
         //elem.id = "cheese"
         this.elem = elem;
@@ -47,6 +48,7 @@ class CheesePlease {
 
     play() {
         const that = this;
+        goal.style.display = "block";
         this.mouse.insertBefore(that.stack, that.mouse.childNodes[0]);
         let id = setInterval(function () {
             const cheeseVal = that.cheese.elem.getBoundingClientRect();
@@ -64,11 +66,11 @@ class CheesePlease {
                 that.stack.insertBefore(that.cheese.elem, that.stack.childNodes[0]);
                 that.cheese.elem.classList.remove("cheese");
 
-                let cheeseSpeed = that.cheese.ystep + .2;
+                let cheeseSpeed = that.cheese.ystep + .025;
                 that.cheese = new Cheese(Math.random() * (that.containerVal.width - 100), 0, cheeseSpeed, container);
             }
-
-            if (mouseVal.height >= that.containerVal.height) {
+            let goalVal = goal.getBoundingClientRect();
+            if (mouseVal.top <= goalVal.bottom) {
                 clearInterval(id);
                 that.mouse.style.visibility = "hidden";
                 liveMouse.style.display = "block";
@@ -85,16 +87,17 @@ class CheesePlease {
 
 
     moveLeft() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) - 20 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) - 100 + 'px';
     }
 
     moveRight() {
-        this.mouse.style.left = parseInt(this.mouse.style.left) + 20 + 'px';
+        this.mouse.style.left = parseInt(this.mouse.style.left) + 100 + 'px';
     }
 
 }
 
 let homepage = document.getElementById("homepage");
+
 
 let game = null;
 
@@ -108,7 +111,6 @@ window.addEventListener('keydown', (e) => {
 });
 
 playButton.addEventListener('click', () => {
-    console.log(liveMouse.style.display);
     homepage.style.display = "none";
     container.style.display = "block";
     mouse.style.visibility = "visible";
@@ -120,6 +122,7 @@ for (var i = 0; i < homeButton.length; i++) {
     homeButton[i].addEventListener('click', () => {
         homepage.style.display = "block";
         container.style.display = "none";
+        goal.style.display = "none";
         deadMouse.style.display = "none";
         liveMouse.style.display = "none";
     });
