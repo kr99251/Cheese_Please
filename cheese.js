@@ -60,7 +60,7 @@ class CheesePlease {
             }
 
             const mouseVal = that.mouse.getBoundingClientRect();
-            if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right) {
+            if (cheeseVal.bottom >= mouseVal.top && cheeseVal.right >= mouseVal.left && cheeseVal.left <= mouseVal.right && cheeseVal.top <= mouseVal.top) {
                 that.stack.insertBefore(that.cheese.elem, that.stack.childNodes[0]);
                 that.cheese.elem.classList.remove("cheese");
 
